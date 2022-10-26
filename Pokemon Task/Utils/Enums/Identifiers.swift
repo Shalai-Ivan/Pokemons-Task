@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+enum Identifiers {
+    enum Cells: String {
+        case main = "mainCell"
+    }
+    enum Headers: String {
+        case main = "mainHeader"
+    }
+}

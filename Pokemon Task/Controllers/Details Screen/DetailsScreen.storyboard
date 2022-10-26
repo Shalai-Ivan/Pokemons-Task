@@ -1,28 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="DetailsViewController" customModule="Pokemon_Task" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="#pokemon #pokeball #picachu #android #ios #wallpaper #black" translatesAutoresizingMaskIntoConstraints="NO" id="tX0-ny-nEM">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEb-Px-1gH">
+                                <rect key="frame" x="0.0" y="54" width="414" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xSq-b6-HUd">
+                                <rect key="frame" x="5" y="88" width="404" height="311"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xSq-b6-HUd" secondAttribute="height" multiplier="1.3:1" id="oVW-Q0-Zsu"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Tbv-rt-pa4">
+                                <rect key="frame" x="5" y="409" width="404" height="250"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nId-od-Jpu">
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="83"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpN-RN-kXk">
+                                        <rect key="frame" x="0.0" y="83" width="404" height="83.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5x-lI-xUe">
+                                        <rect key="frame" x="0.0" y="166.5" width="404" height="83.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tX0-ny-nEM" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="6xH-Fs-zP1"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xSq-b6-HUd" secondAttribute="trailing" constant="5" id="7Dl-6P-xLF"/>
+                            <constraint firstItem="Tbv-rt-pa4" firstAttribute="height" secondItem="tX0-ny-nEM" secondAttribute="height" multiplier="0.279018" id="7kY-mw-d61"/>
+                            <constraint firstItem="Tbv-rt-pa4" firstAttribute="top" secondItem="xSq-b6-HUd" secondAttribute="bottom" constant="10" id="CTP-Dd-bkt"/>
+                            <constraint firstItem="CEb-Px-1gH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="Eyn-G9-6XA"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CEb-Px-1gH" secondAttribute="trailing" id="JSo-50-xGr"/>
+                            <constraint firstItem="tX0-ny-nEM" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="ReY-id-Bye"/>
+                            <constraint firstAttribute="bottom" secondItem="tX0-ny-nEM" secondAttribute="bottom" id="Szl-9E-xF9"/>
+                            <constraint firstItem="Tbv-rt-pa4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="5" id="b6z-Te-Lhd"/>
+                            <constraint firstItem="tX0-ny-nEM" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="bIq-05-yHI"/>
+                            <constraint firstItem="CEb-Px-1gH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="cEX-06-5GY"/>
+                            <constraint firstItem="xSq-b6-HUd" firstAttribute="top" secondItem="CEb-Px-1gH" secondAttribute="bottom" constant="10" id="cfG-HD-AQ6"/>
+                            <constraint firstItem="xSq-b6-HUd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="5" id="jNh-Gu-Za5"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Tbv-rt-pa4" secondAttribute="trailing" constant="5" id="oSr-VU-fC2"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="heightLabel" destination="n5x-lI-xUe" id="IOB-VC-ekJ"/>
+                        <outlet property="image" destination="xSq-b6-HUd" id="FMC-7l-tNa"/>
+                        <outlet property="nameLabel" destination="CEb-Px-1gH" id="iR6-I4-mSS"/>
+                        <outlet property="typeLabel" destination="nId-od-Jpu" id="jGA-AX-R5c"/>
+                        <outlet property="weightLabel" destination="OpN-RN-kXk" id="aYl-Nw-0cb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="92.410714285714278"/>
         </scene>
     </scenes>
     <resources>
+        <image name="#pokemon #pokeball #picachu #android #ios #wallpaper #black" width="720" height="1280"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

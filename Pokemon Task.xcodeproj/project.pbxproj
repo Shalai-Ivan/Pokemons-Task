@@ -9,13 +9,21 @@
 /* Begin PBXBuildFile section */
 		9A8BB9D329096B51002ABB08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BB9D229096B51002ABB08 /* AppDelegate.swift */; };
 		9A8BB9D529096B51002ABB08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BB9D429096B51002ABB08 /* SceneDelegate.swift */; };
-		9A8BB9D729096B51002ABB08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BB9D629096B51002ABB08 /* ViewController.swift */; };
-		9A8BB9DA29096B51002ABB08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A8BB9D829096B51002ABB08 /* Main.storyboard */; };
+		9A8BB9D729096B51002ABB08 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BB9D629096B51002ABB08 /* MainViewController.swift */; };
+		9A8BB9DA29096B51002ABB08 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A8BB9D829096B51002ABB08 /* MainScreen.storyboard */; };
 		9A8BB9DC29096B53002ABB08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A8BB9DB29096B53002ABB08 /* Assets.xcassets */; };
 		9A8BB9DF29096B53002ABB08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A8BB9DD29096B53002ABB08 /* LaunchScreen.storyboard */; };
 		9A8BB9EA29096B53002ABB08 /* Pokemon_TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BB9E929096B53002ABB08 /* Pokemon_TaskTests.swift */; };
 		9A8BB9F429096B53002ABB08 /* Pokemon_TaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BB9F329096B53002ABB08 /* Pokemon_TaskUITests.swift */; };
 		9A8BB9F629096B53002ABB08 /* Pokemon_TaskUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BB9F529096B53002ABB08 /* Pokemon_TaskUITestsLaunchTests.swift */; };
+		9A8BBA0829097AF5002ABB08 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BBA0729097AF5002ABB08 /* TableViewExtension.swift */; };
+		9A8BBA0C29098CD6002ABB08 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BBA0A29098CD6002ABB08 /* MainTableViewCell.swift */; };
+		9A8BBA0D29098CD6002ABB08 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8BBA0B29098CD6002ABB08 /* MainTableViewCell.xib */; };
+		9A8BBA1129099032002ABB08 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BBA1029099032002ABB08 /* Identifiers.swift */; };
+		9A8BBA152909A2DE002ABB08 /* MainTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BBA142909A2DE002ABB08 /* MainTableViewHeader.swift */; };
+		9A91E23F2909A56800C9D21F /* MainTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A91E23E2909A56800C9D21F /* MainTableViewHeader.xib */; };
+		9A91E2432909BF4F00C9D21F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91E2422909BF4F00C9D21F /* DetailsViewController.swift */; };
+		9A91E2452909BF6300C9D21F /* DetailsScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A91E2442909BF6300C9D21F /* DetailsScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +47,8 @@
 		9A8BB9CF29096B51002ABB08 /* Pokemon Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pokemon Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A8BB9D229096B51002ABB08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A8BB9D429096B51002ABB08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9A8BB9D629096B51002ABB08 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9A8BB9D929096B51002ABB08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9A8BB9D629096B51002ABB08 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9A8BB9D929096B51002ABB08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainScreen.storyboard; sourceTree = "<group>"; };
 		9A8BB9DB29096B53002ABB08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A8BB9DE29096B53002ABB08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A8BB9E029096B53002ABB08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +57,14 @@
 		9A8BB9EF29096B53002ABB08 /* Pokemon TaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pokemon TaskUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A8BB9F329096B53002ABB08 /* Pokemon_TaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon_TaskUITests.swift; sourceTree = "<group>"; };
 		9A8BB9F529096B53002ABB08 /* Pokemon_TaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon_TaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9A8BBA0729097AF5002ABB08 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
+		9A8BBA0A29098CD6002ABB08 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		9A8BBA0B29098CD6002ABB08 /* MainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
+		9A8BBA1029099032002ABB08 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
+		9A8BBA142909A2DE002ABB08 /* MainTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewHeader.swift; sourceTree = "<group>"; };
+		9A91E23E2909A56800C9D21F /* MainTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableViewHeader.xib; sourceTree = "<group>"; };
+		9A91E2422909BF4F00C9D21F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		9A91E2442909BF6300C9D21F /* DetailsScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +115,11 @@
 		9A8BB9D129096B51002ABB08 /* Pokemon Task */ = {
 			isa = PBXGroup;
 			children = (
-				9A8BB9D229096B51002ABB08 /* AppDelegate.swift */,
-				9A8BB9D429096B51002ABB08 /* SceneDelegate.swift */,
-				9A8BB9D629096B51002ABB08 /* ViewController.swift */,
-				9A8BB9D829096B51002ABB08 /* Main.storyboard */,
-				9A8BB9DB29096B53002ABB08 /* Assets.xcassets */,
-				9A8BB9DD29096B53002ABB08 /* LaunchScreen.storyboard */,
+				9A8BBA0E29098D58002ABB08 /* Utils */,
+				9A8BBA0529096D47002ABB08 /* Controllers */,
+				9A8BBA0429096C3E002ABB08 /* Models */,
+				9A8BBA0329096C1B002ABB08 /* Resources */,
+				9A8BBA0229096C0A002ABB08 /* Application */,
 				9A8BB9E029096B53002ABB08 /* Info.plist */,
 			);
 			path = "Pokemon Task";
@@ -125,6 +140,95 @@
 				9A8BB9F529096B53002ABB08 /* Pokemon_TaskUITestsLaunchTests.swift */,
 			);
 			path = "Pokemon TaskUITests";
+			sourceTree = "<group>";
+		};
+		9A8BBA0229096C0A002ABB08 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				9A8BB9D229096B51002ABB08 /* AppDelegate.swift */,
+				9A8BB9D429096B51002ABB08 /* SceneDelegate.swift */,
+				9A8BB9DD29096B53002ABB08 /* LaunchScreen.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		9A8BBA0329096C1B002ABB08 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9A8BB9DB29096B53002ABB08 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9A8BBA0429096C3E002ABB08 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9A8BBA0529096D47002ABB08 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9A91E2412909BF1C00C9D21F /* Details Screen */,
+				9A8BBA0929098CAD002ABB08 /* MainScreen */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9A8BBA0629097ADF002ABB08 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9A8BBA0729097AF5002ABB08 /* TableViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9A8BBA0929098CAD002ABB08 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9A8BB9D629096B51002ABB08 /* MainViewController.swift */,
+				9A8BB9D829096B51002ABB08 /* MainScreen.storyboard */,
+				9A91E2402909AA7C00C9D21F /* TableView */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		9A8BBA0E29098D58002ABB08 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9A8BBA0F29098D60002ABB08 /* Enums */,
+				9A8BBA0629097ADF002ABB08 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		9A8BBA0F29098D60002ABB08 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				9A8BBA1029099032002ABB08 /* Identifiers.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		9A91E2402909AA7C00C9D21F /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				9A8BBA0A29098CD6002ABB08 /* MainTableViewCell.swift */,
+				9A8BBA0B29098CD6002ABB08 /* MainTableViewCell.xib */,
+				9A8BBA142909A2DE002ABB08 /* MainTableViewHeader.swift */,
+				9A91E23E2909A56800C9D21F /* MainTableViewHeader.xib */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		9A91E2412909BF1C00C9D21F /* Details Screen */ = {
+			isa = PBXGroup;
+			children = (
+				9A91E2422909BF4F00C9D21F /* DetailsViewController.swift */,
+				9A91E2442909BF6300C9D21F /* DetailsScreen.storyboard */,
+			);
+			path = "Details Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +336,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A8BB9DF29096B53002ABB08 /* LaunchScreen.storyboard in Resources */,
+				9A91E23F2909A56800C9D21F /* MainTableViewHeader.xib in Resources */,
 				9A8BB9DC29096B53002ABB08 /* Assets.xcassets in Resources */,
-				9A8BB9DA29096B51002ABB08 /* Main.storyboard in Resources */,
+				9A91E2452909BF6300C9D21F /* DetailsScreen.storyboard in Resources */,
+				9A8BBA0D29098CD6002ABB08 /* MainTableViewCell.xib in Resources */,
+				9A8BB9DA29096B51002ABB08 /* MainScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +365,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A8BB9D729096B51002ABB08 /* ViewController.swift in Sources */,
+				9A8BB9D729096B51002ABB08 /* MainViewController.swift in Sources */,
 				9A8BB9D329096B51002ABB08 /* AppDelegate.swift in Sources */,
+				9A8BBA152909A2DE002ABB08 /* MainTableViewHeader.swift in Sources */,
+				9A91E2432909BF4F00C9D21F /* DetailsViewController.swift in Sources */,
 				9A8BB9D529096B51002ABB08 /* SceneDelegate.swift in Sources */,
+				9A8BBA0829097AF5002ABB08 /* TableViewExtension.swift in Sources */,
+				9A8BBA1129099032002ABB08 /* Identifiers.swift in Sources */,
+				9A8BBA0C29098CD6002ABB08 /* MainTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,12 +409,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9A8BB9D829096B51002ABB08 /* Main.storyboard */ = {
+		9A8BB9D829096B51002ABB08 /* MainScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9A8BB9D929096B51002ABB08 /* Base */,
 			);
-			name = Main.storyboard;
+			name = MainScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		9A8BB9DD29096B53002ABB08 /* LaunchScreen.storyboard */ = {
@@ -442,7 +554,7 @@
 				INFOPLIST_FILE = "Pokemon Task/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = MainScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,7 +582,7 @@
 				INFOPLIST_FILE = "Pokemon Task/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = MainScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
