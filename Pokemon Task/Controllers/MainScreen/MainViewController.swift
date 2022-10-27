@@ -15,13 +15,13 @@ final class MainViewController: UIViewController {
         setupSettings()
     }
     private func setupSettings() {
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
+                                                                   NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25)]
+        title = "Choose your pokemon"
         tableView.delegate = self
         tableView.dataSource = self
         let cellNib = UINib(nibName: String(describing: MainTableViewCell.self), bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: Identifiers.Cells.main.rawValue)
-        let headerNib = UINib(nibName: String(describing: MainTableViewHeader.self), bundle: nil)
-        tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: Identifiers.Headers.main.rawValue)
     }
 }
 
@@ -38,9 +38,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let height = view.frame.height / 20
         return height
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Identifiers.Headers.main.rawValue) as! MainTableViewHeader
-        header.initialize()
-        return header
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let storyboard = UIStoryboard(name: Identifiers.Storyboards.details.rawValue, bundle: nil)
+        let detailsVC = storyboard.instantiateInitialViewController() as! DetailsViewController
+        self.navigationController?.pushViewController(detailsVC, animated: true)
     }
 }

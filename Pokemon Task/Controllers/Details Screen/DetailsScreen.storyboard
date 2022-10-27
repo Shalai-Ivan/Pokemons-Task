@@ -19,20 +19,20 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="#pokemon #pokeball #picachu #android #ios #wallpaper #black" translatesAutoresizingMaskIntoConstraints="NO" id="tX0-ny-nEM">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEb-Px-1gH">
-                                <rect key="frame" x="0.0" y="54" width="414" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokemon Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEb-Px-1gH">
+                                <rect key="frame" x="5" y="54" width="404" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xSq-b6-HUd">
-                                <rect key="frame" x="5" y="88" width="404" height="311"/>
+                                <rect key="frame" x="5" y="94" width="404" height="311"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xSq-b6-HUd" secondAttribute="height" multiplier="1.3:1" id="oVW-Q0-Zsu"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Tbv-rt-pa4">
-                                <rect key="frame" x="5" y="409" width="404" height="250"/>
+                                <rect key="frame" x="5" y="415" width="404" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nId-od-Jpu">
                                         <rect key="frame" x="0.0" y="0.0" width="404" height="83"/>
@@ -63,17 +63,18 @@
                             <constraint firstItem="Tbv-rt-pa4" firstAttribute="height" secondItem="tX0-ny-nEM" secondAttribute="height" multiplier="0.279018" id="7kY-mw-d61"/>
                             <constraint firstItem="Tbv-rt-pa4" firstAttribute="top" secondItem="xSq-b6-HUd" secondAttribute="bottom" constant="10" id="CTP-Dd-bkt"/>
                             <constraint firstItem="CEb-Px-1gH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="Eyn-G9-6XA"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CEb-Px-1gH" secondAttribute="trailing" id="JSo-50-xGr"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CEb-Px-1gH" secondAttribute="trailing" constant="5" id="JSo-50-xGr"/>
                             <constraint firstItem="tX0-ny-nEM" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="ReY-id-Bye"/>
                             <constraint firstAttribute="bottom" secondItem="tX0-ny-nEM" secondAttribute="bottom" id="Szl-9E-xF9"/>
                             <constraint firstItem="Tbv-rt-pa4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="5" id="b6z-Te-Lhd"/>
                             <constraint firstItem="tX0-ny-nEM" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="bIq-05-yHI"/>
-                            <constraint firstItem="CEb-Px-1gH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="cEX-06-5GY"/>
+                            <constraint firstItem="CEb-Px-1gH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="5" id="cEX-06-5GY"/>
                             <constraint firstItem="xSq-b6-HUd" firstAttribute="top" secondItem="CEb-Px-1gH" secondAttribute="bottom" constant="10" id="cfG-HD-AQ6"/>
                             <constraint firstItem="xSq-b6-HUd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="5" id="jNh-Gu-Za5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Tbv-rt-pa4" secondAttribute="trailing" constant="5" id="oSr-VU-fC2"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="QYz-Ut-JyU"/>
                     <connections>
                         <outlet property="heightLabel" destination="n5x-lI-xUe" id="IOB-VC-ekJ"/>
                         <outlet property="image" destination="xSq-b6-HUd" id="FMC-7l-tNa"/>
@@ -84,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="92.410714285714278"/>
+            <point key="canvasLocation" x="1042.0289855072465" y="92.410714285714278"/>
         </scene>
     </scenes>
     <resources>

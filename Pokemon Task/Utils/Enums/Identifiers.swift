@@ -14,4 +14,7 @@ enum Identifiers {
     enum Headers: String {
         case main = "mainHeader"
     }
+    enum Storyboards: String {
+        case details = "DetailsScreen"
+    }
 }

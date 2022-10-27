@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Choose your pokemon-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Pokemon_Task" customModuleProvider="target" sceneMemberID="viewController">
@@ -44,7 +44,9 @@
                             <constraint firstItem="NoW-tg-5KS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="eTw-vJ-rpG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Choose your pokemon" id="Sdl-kX-qbN"/>
+                    <navigationItem key="navigationItem" id="Sdl-kX-qbN">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="s2I-ud-AE2"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="NoW-tg-5KS" id="1Hq-em-lFG"/>
                     </connections>
@@ -61,6 +63,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="N2D-Et-2De">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

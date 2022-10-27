@@ -20,8 +20,6 @@
 		9A8BBA0C29098CD6002ABB08 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BBA0A29098CD6002ABB08 /* MainTableViewCell.swift */; };
 		9A8BBA0D29098CD6002ABB08 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8BBA0B29098CD6002ABB08 /* MainTableViewCell.xib */; };
 		9A8BBA1129099032002ABB08 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BBA1029099032002ABB08 /* Identifiers.swift */; };
-		9A8BBA152909A2DE002ABB08 /* MainTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BBA142909A2DE002ABB08 /* MainTableViewHeader.swift */; };
-		9A91E23F2909A56800C9D21F /* MainTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A91E23E2909A56800C9D21F /* MainTableViewHeader.xib */; };
 		9A91E2432909BF4F00C9D21F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91E2422909BF4F00C9D21F /* DetailsViewController.swift */; };
 		9A91E2452909BF6300C9D21F /* DetailsScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A91E2442909BF6300C9D21F /* DetailsScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -61,8 +59,6 @@
 		9A8BBA0A29098CD6002ABB08 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		9A8BBA0B29098CD6002ABB08 /* MainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
 		9A8BBA1029099032002ABB08 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
-		9A8BBA142909A2DE002ABB08 /* MainTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewHeader.swift; sourceTree = "<group>"; };
-		9A91E23E2909A56800C9D21F /* MainTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableViewHeader.xib; sourceTree = "<group>"; };
 		9A91E2422909BF4F00C9D21F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		9A91E2442909BF6300C9D21F /* DetailsScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -216,8 +212,6 @@
 			children = (
 				9A8BBA0A29098CD6002ABB08 /* MainTableViewCell.swift */,
 				9A8BBA0B29098CD6002ABB08 /* MainTableViewCell.xib */,
-				9A8BBA142909A2DE002ABB08 /* MainTableViewHeader.swift */,
-				9A91E23E2909A56800C9D21F /* MainTableViewHeader.xib */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -336,7 +330,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A8BB9DF29096B53002ABB08 /* LaunchScreen.storyboard in Resources */,
-				9A91E23F2909A56800C9D21F /* MainTableViewHeader.xib in Resources */,
 				9A8BB9DC29096B53002ABB08 /* Assets.xcassets in Resources */,
 				9A91E2452909BF6300C9D21F /* DetailsScreen.storyboard in Resources */,
 				9A8BBA0D29098CD6002ABB08 /* MainTableViewCell.xib in Resources */,
@@ -367,7 +360,6 @@
 			files = (
 				9A8BB9D729096B51002ABB08 /* MainViewController.swift in Sources */,
 				9A8BB9D329096B51002ABB08 /* AppDelegate.swift in Sources */,
-				9A8BBA152909A2DE002ABB08 /* MainTableViewHeader.swift in Sources */,
 				9A91E2432909BF4F00C9D21F /* DetailsViewController.swift in Sources */,
 				9A8BB9D529096B51002ABB08 /* SceneDelegate.swift in Sources */,
 				9A8BBA0829097AF5002ABB08 /* TableViewExtension.swift in Sources */,
