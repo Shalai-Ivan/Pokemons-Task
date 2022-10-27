@@ -10,4 +10,5 @@ import Foundation
 protocol MainScreenViewModelType {
     func getCount() -> Int
     func getName(forIndexpath indexPath: IndexPath) -> String
+    func getModel(forIndexPath indexPath: IndexPath, completion: @escaping (PokemonData) -> Void)
 }

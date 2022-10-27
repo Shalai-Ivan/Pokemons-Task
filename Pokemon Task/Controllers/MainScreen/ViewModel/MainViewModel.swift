@@ -8,23 +8,36 @@
 import Foundation
 
 final class MainViewModel {
-    private var names: [String]?
+    private var nextPokemonsUrl: String?
+    private var names: [String] = []
+    private var urlsInfo: [String] = []
     private var networkManager = NetworkManager()
-    private var models: [PokemonInfo] = []
     var stringUrl = "https://pokeapi.co/api/v2/pokemon"
     
     init() {
-        networkManager.fetchRequest(stringUrl: stringUrl) { [weak self] names in
-            self?.names = names
+        networkManager.fetchRequest(stringUrl: stringUrl) { [weak self] pokemonData in
+            self?.nextPokemonsUrl = pokemonData.nextPokemonsUrl
+            guard let results = pokemonData.results else { return }
+            for item in results {
+                self?.names.append(item.name)
+                self?.urlsInfo.append(item.urlInfo)
+            }
         }
     }
 }
 
 extension MainViewModel: MainScreenViewModelType {
+
     func getCount() -> Int {
-        return names?.count ?? 0
+        return names.count
     }
     func getName(forIndexpath indexPath: IndexPath) -> String {
-        return names?[indexPath.row] ?? "Unknown"
+        return names[indexPath.row]
+    }
+    func getModel(forIndexPath indexPath: IndexPath, completion: @escaping (PokemonData) -> Void) {
+        let stringUrl = urlsInfo[indexPath.row]
+        networkManager.fetchRequest(stringUrl: stringUrl) { pokemonData in
+            completion(pokemonData)
+        }
     }
 }

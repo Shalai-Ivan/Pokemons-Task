@@ -35,6 +35,11 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="Pokemon-Wallpaper"/>
                                 </userDefinedRuntimeAttributes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="EYC-Yc-WKm">
+                                <rect key="frame" x="0.0" y="426" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <constraints>
@@ -48,6 +53,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="s2I-ud-AE2"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="EYC-Yc-WKm" id="b9J-Ur-aob"/>
                         <outlet property="tableView" destination="NoW-tg-5KS" id="1Hq-em-lFG"/>
                     </connections>
                 </viewController>

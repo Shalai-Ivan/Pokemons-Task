@@ -9,9 +9,8 @@ import UIKit
 
 final class MainViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
-    private var pokemonModel: PokemonModel?
-    private var networkManager = NetworkManager()
     private var viewModel = MainViewModel()
 
     override func viewDidLoad() {
@@ -26,6 +25,7 @@ final class MainViewController: UIViewController {
         tableView.dataSource = self
         let cellNib = UINib(nibName: String(describing: MainTableViewCell.self), bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: Identifiers.Cells.main.rawValue)
+        activityIndicator.isHidden = true
     }
 }
 
@@ -35,7 +35,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.Cells.main.rawValue) as! MainTableViewCell
-        cell.pokemonNameLabel.text = viewModel.getName(forIndexpath: indexPath)
+        cell.pokemonNameLabel.text = self.viewModel.getName(forIndexpath: indexPath)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -43,9 +43,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return height
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        activityIndicator.isHidden = false
         tableView.deselectRow(at: indexPath, animated: true)
         let storyboard = UIStoryboard(name: Identifiers.Storyboards.details.rawValue, bundle: nil)
         let detailsVC = storyboard.instantiateInitialViewController() as! DetailsViewController
-        self.navigationController?.pushViewController(detailsVC, animated: true)
+        viewModel.getModel(forIndexPath: indexPath) { pokemonData in
+            detailsVC.pokemonModel = PokemonModel(pokemonData: pokemonData)
+            DispatchQueue.main.async { [weak self] in
+                self?.activityIndicator.stopAnimating()
+                self?.navigationController?.pushViewController(detailsVC, animated: true)
+            }
+        }
     }
 }

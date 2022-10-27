@@ -8,11 +8,16 @@
 import Foundation
 
 struct PokemonData: Codable {
-    let nextPokemonsUrl: String
-    let results: [Results]
+    let nextPokemonsUrl: String?
+    let results: [Results]?
+    let name: String?
+    let sprites: Sprites?
+    let types: [TypeElement]?
+    let weight: Int?
+    let height: Int?
     enum CodingKeys: String, CodingKey {
         case nextPokemonsUrl = "next"
-        case results
+        case results, name, sprites, types, weight, height
     }
 }
 
@@ -23,14 +28,6 @@ struct Results: Codable {
         case name
         case urlInfo = "url"
     }
-}
-
-struct PokemonInfo: Codable {
-    let name: String
-    let sprites: [Sprites]
-    let types: [TypeElement]
-    let weight: Int
-    let height: Int
 }
 
 struct Sprites: Codable {

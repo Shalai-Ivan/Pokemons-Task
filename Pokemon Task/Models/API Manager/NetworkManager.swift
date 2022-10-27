@@ -7,15 +7,15 @@
 
 import UIKit
 
-//enum TypeRequest {
-//    case list(stringUrl: String)
-//    case info(stringUrl: String)
-//}
+enum TypeRequest {
+    case list
+    case info
+}
 
 class NetworkManager {
     var nextPokemonsUrl = ""
     var completionHandler: (([PokemonModel]) -> Void)?
-    func fetchRequest(stringUrl: String, completion: @escaping (([String]) -> Void)) {
+    func fetchRequest(stringUrl: String, completion: @escaping ((PokemonData) -> Void)) {
         guard let url = URL(string: stringUrl) else { return }
         let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: url) { [weak self] data, response, error in
@@ -23,18 +23,17 @@ class NetworkManager {
                 print(error?.localizedDescription)
             }
             if let data = data {
-                if let names = self?.parseJSON(data: data) {
-                    completion(names)
+                if let pokemonData = self?.parseJSON(data: data) {
+                    completion(pokemonData)
                 }
             }
         }
         dataTask.resume()
     }
-    private func parseJSON (data: Data) -> [String]? {
+    private func parseJSON (data: Data) -> PokemonData? {
         do {
             let pokemonData = try JSONDecoder().decode(PokemonData.self, from: data)
-            let pokemonModels = pokemonData.results.map { $0.name }
-            return pokemonModels
+            return pokemonData
         } catch let error {
             print(error.localizedDescription)
         }
