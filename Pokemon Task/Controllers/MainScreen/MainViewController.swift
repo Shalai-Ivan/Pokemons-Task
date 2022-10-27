@@ -9,6 +9,10 @@ import UIKit
 
 final class MainViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
+    
+    private var pokemonModel: PokemonModel?
+    private var networkManager = NetworkManager()
+    private var viewModel = MainViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +31,11 @@ final class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 40
+        return viewModel.getCount()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.Cells.main.rawValue) as! MainTableViewCell
-        cell.pokemonNameLabel.text = "pokemon"
+        cell.pokemonNameLabel.text = viewModel.getName(forIndexpath: indexPath)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
