@@ -7,28 +7,28 @@
 
 import UIKit
 
-enum TypeRequest {
-    case list
-    case info
-}
-
 class NetworkManager {
-    var nextPokemonsUrl = ""
-    var completionHandler: (([PokemonModel]) -> Void)?
-    func fetchRequest(stringUrl: String, completion: @escaping ((PokemonData) -> Void)) {
+    var isPaginating = false
+    func fetchRequest(stringUrl: String, pagination: Bool, completion: @escaping ((PokemonData) -> Void)) {
         guard let url = URL(string: stringUrl) else { return }
-        let session = URLSession(configuration: .default)
-        let dataTask = session.dataTask(with: url) { [weak self] data, response, error in
-            if error != nil {
-                print(error?.localizedDescription)
-            }
-            if let data = data {
-                if let pokemonData = self?.parseJSON(data: data) {
-                    completion(pokemonData)
+        if pagination {
+            isPaginating = true
+        }
+        DispatchQueue.global().asyncAfter(deadline: .now() + (pagination ? 3 : 0)) {
+            let session = URLSession(configuration: .default)
+            let dataTask = session.dataTask(with: url) { [weak self] data, response, error in
+                if error != nil {
+                    print(error?.localizedDescription)
+                }
+                if let data = data {
+                    if let pokemonData = self?.parseJSON(data: data) {
+                        completion(pokemonData)
+                        self?.isPaginating = false
+                    }
                 }
             }
+            dataTask.resume()
         }
-        dataTask.resume()
     }
     private func parseJSON (data: Data) -> PokemonData? {
         do {

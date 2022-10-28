@@ -27,8 +27,18 @@ final class MainViewController: UIViewController {
         tableView.register(cellNib, forCellReuseIdentifier: Identifiers.Cells.main.rawValue)
         activityIndicator.isHidden = true
     }
+    private func createFooterView() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100))
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        spinner.style = .large
+        spinner.color = .white
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        return footerView
+    }
 }
-
+// MARK: - TableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.getCount()
@@ -52,6 +62,23 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             DispatchQueue.main.async { [weak self] in
                 self?.activityIndicator.stopAnimating()
                 self?.navigationController?.pushViewController(detailsVC, animated: true)
+            }
+        }
+    }
+}
+// MARK: - Pagination
+extension MainViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height) {
+            tableView.tableFooterView = createFooterView()
+            viewModel.getMorePokemons() { bool in
+                if bool {
+                    DispatchQueue.main.async { [weak self] in
+                        self?.tableView.tableFooterView = nil
+                        self?.tableView.reloadData()
+                    }
+                }
             }
         }
     }
