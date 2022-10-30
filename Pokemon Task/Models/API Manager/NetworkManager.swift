@@ -9,7 +9,7 @@ import UIKit
 
 class NetworkManager {
     var isPaginating = false
-    func fetchRequest(stringUrl: String, pagination: Bool, completion: @escaping ((PokemonData) -> Void)) {
+    func fetchRequest(stringUrl: String, pagination: Bool, completion: @escaping ((PokemonData?, String?) -> Void)) {
         guard let url = URL(string: stringUrl) else { return }
         if pagination {
             isPaginating = true
@@ -17,12 +17,13 @@ class NetworkManager {
         DispatchQueue.global().asyncAfter(deadline: .now() + (pagination ? 3 : 0)) {
             let session = URLSession(configuration: .default)
             let dataTask = session.dataTask(with: url) { [weak self] data, response, error in
-                if error != nil {
-                    print(error?.localizedDescription)
+                guard error == nil else {
+                    completion(nil, error?.localizedDescription)
+                    return
                 }
                 if let data = data {
                     if let pokemonData = self?.parseJSON(data: data) {
-                        completion(pokemonData)
+                        completion(pokemonData, nil)
                         self?.isPaginating = false
                     }
                 }

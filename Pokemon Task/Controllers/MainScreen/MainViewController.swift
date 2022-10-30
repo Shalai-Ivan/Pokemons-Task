@@ -11,11 +11,32 @@ final class MainViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
-    private var viewModel = MainViewModel()
+    private var viewModel: MainScreenViewModelType?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        internetCheck()
         setupSettings()
+        viewModel = MainViewModel()
+    }
+    // MARK: - Checking internet connection
+    private func internetCheck() {
+        print("INTERNET CHECKING")
+        if !Reachability.isConnectedToNetwork() {
+            var repeating = true
+            while repeating || Reachability.isConnectedToNetwork() {
+                createAlert(fotTitle: "Bad connection", forMessage: "Sorry, you have no internet connection",
+                            forStyle: .alert, forAlertType: .internetConnection) { [weak self] bool in
+                    if bool {
+                        repeating = false
+                    } else {
+                        self?.activityIndicator.startAnimating()
+                        sleep(3)
+                        self?.activityIndicator.stopAnimating()
+                    }
+                }
+            }
+        }
     }
     private func setupSettings() {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -41,11 +62,11 @@ final class MainViewController: UIViewController {
 // MARK: - TableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.getCount()
+        return viewModel?.getCount() ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.Cells.main.rawValue) as! MainTableViewCell
-        cell.pokemonNameLabel.text = self.viewModel.getName(forIndexpath: indexPath)
+        cell.pokemonNameLabel.text = self.viewModel?.getName(forIndexpath: indexPath)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -57,7 +78,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let storyboard = UIStoryboard(name: Identifiers.Storyboards.details.rawValue, bundle: nil)
         let detailsVC = storyboard.instantiateInitialViewController() as! DetailsViewController
-        viewModel.getModel(forIndexPath: indexPath) { pokemonData in
+        viewModel?.getModel(forIndexPath: indexPath) { pokemonData in
             detailsVC.pokemonModel = PokemonModel(pokemonData: pokemonData)
             DispatchQueue.main.async { [weak self] in
                 self?.activityIndicator.stopAnimating()
@@ -72,7 +93,7 @@ extension MainViewController: UIScrollViewDelegate {
         let position = scrollView.contentOffset.y
         if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height) {
             tableView.tableFooterView = createFooterView()
-            viewModel.getMorePokemons() { bool in
+            viewModel?.getMorePokemons() { bool in
                 if bool {
                     DispatchQueue.main.async { [weak self] in
                         self?.tableView.tableFooterView = nil
