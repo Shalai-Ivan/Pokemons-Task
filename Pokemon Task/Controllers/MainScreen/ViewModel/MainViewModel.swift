@@ -5,12 +5,19 @@
 //  Created by MacMini on 27.10.22.
 //
 
+import RealmSwift
 import UIKit
 
 final class MainViewModel {
     private var nextPokemonsUrl: String = ""
     private var names: [String] = []
-    private var urlsInfo: [String] = []
+    private var urlsInfo: [String] = [] {
+        willSet {
+            DispatchQueue.main.sync {
+                self.savePokemonModel(stringUrl: newValue.last!)                
+            }
+        }
+    }
     private var networkManager = NetworkManager()
     private var apiUrl = "https://pokeapi.co/api/v2/pokemon"
     
@@ -30,6 +37,24 @@ final class MainViewModel {
             completion?(true)
         }
     }
+    private func savePokemonModel(stringUrl: String) {
+        networkManager.fetchRequest(stringUrl: stringUrl, pagination: false) { pokemonData in
+            DispatchQueue.main.async {
+                let realm = try! Realm()
+                let model = Pokemon(pokemonData: pokemonData)
+                let models = realm.objects(Pokemon.self)
+                print("MODELS IN REALM - \(models.count)")
+                if !models.contains(where: { pokemonModel in
+                    model.name == pokemonModel.name
+                }) {
+                    print("RESUL BOOL - \(!models.contains(model))")
+                    try! realm.write {
+                        realm.create(Pokemon.self, value: model)
+                    }
+                }
+            }
+        }
+    }
 }
 
 extension MainViewModel: MainScreenViewModelType {
@@ -46,10 +71,17 @@ extension MainViewModel: MainScreenViewModelType {
             completion(bool)
         }
     }
-    func getModel(forIndexPath indexPath: IndexPath, completion: @escaping (PokemonData) -> Void) {
-        let stringUrl = urlsInfo[indexPath.row]
-        networkManager.fetchRequest(stringUrl: stringUrl, pagination: false) { pokemonData in
-            completion(pokemonData)
+    func getModel(forIndexPath indexPath: IndexPath, forName name: String, completion: @escaping (Pokemon) -> Void) {
+        let realm = try! Realm()
+        if let model = realm.object(ofType: Pokemon.self, forPrimaryKey: name) {
+            completion(model)
+            print("REALM WORKED")
+        } else {
+            let stringUrl = urlsInfo[indexPath.row]
+            networkManager.fetchRequest(stringUrl: stringUrl, pagination: false) { pokemonData in
+                completion(Pokemon(pokemonData: pokemonData))
+                print("NETWORK MANAGER WORKED")
+            }
         }
     }
 }

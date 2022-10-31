@@ -5,6 +5,7 @@
 //  Created by MacMini on 27.10.22.
 //
 
+import RealmSwift
 import UIKit
 
 protocol NetworkManagerDelegate {
@@ -16,6 +17,7 @@ final class NetworkManager {
     var isPaginating = false
     var delegate: NetworkManagerDelegate?
     func fetchRequest(stringUrl: String, pagination: Bool, completion: @escaping ((PokemonData) -> Void)) {
+        let realm = try! Realm()
         guard let url = URL(string: stringUrl) else { return }
         if pagination {
             isPaginating = true

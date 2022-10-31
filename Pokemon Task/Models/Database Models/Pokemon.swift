@@ -5,22 +5,24 @@
 //  Created by MacMini on 27.10.22.
 //
 
+import RealmSwift
 import UIKit
 
-struct PokemonModel {
+class Pokemon: Object {
     
-    let name: String
-    let image: UIImage
-    let type: String
-    let weight: String
-    let height: String
+    @Persisted(primaryKey: true) var name: String
+    @Persisted var imageUrl: String
+    @Persisted var type: String
+    @Persisted var weight: String
+    @Persisted var height: String
     
-    init(pokemonData: PokemonData) {
+   convenience init(pokemonData: PokemonData) {
+        self.init()
         self.name = pokemonData.name ?? "Unknown"
         self.type = pokemonData.types?[0].type.name ?? "Unknown"
         self.weight = String(pokemonData.weight ?? -1)
         self.height = String(pokemonData.height ?? -1)
-        self.image = PokemonModel.getImage(stringUrl: pokemonData.sprites?.imageUrl)
+        self.imageUrl = pokemonData.sprites?.imageUrl ?? ""
     }
     
     static func getImage(stringUrl: String?) -> UIImage {

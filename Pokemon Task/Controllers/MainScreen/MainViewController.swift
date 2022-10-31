@@ -58,8 +58,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource  {
         tableView.deselectRow(at: indexPath, animated: true)
         let storyboard = UIStoryboard(name: Identifiers.Storyboards.details.rawValue, bundle: nil)
         let detailsVC = storyboard.instantiateInitialViewController() as! DetailsViewController
-        viewModel?.getModel(forIndexPath: indexPath) { pokemonData in
-            detailsVC.pokemonModel = PokemonModel(pokemonData: pokemonData)
+        let name = viewModel?.getName(forIndexpath: indexPath)
+        viewModel?.getModel(forIndexPath: indexPath, forName: name!) { pokemonModel in
+            detailsVC.pokemonModel = pokemonModel
             DispatchQueue.main.async { [weak self] in
                 self?.activityIndicator.stopAnimating()
                 self?.navigationController?.pushViewController(detailsVC, animated: true)

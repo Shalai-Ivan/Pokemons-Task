@@ -13,7 +13,7 @@ final class DetailsViewController: UIViewController {
     @IBOutlet private weak var typeLabel: UILabel!
     @IBOutlet private weak var weightLabel: UILabel!
     @IBOutlet private weak var heightLabel: UILabel!
-    var pokemonModel: PokemonModel?
+    var pokemonModel: Pokemon?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ final class DetailsViewController: UIViewController {
             }
             return }
         self.nameLabel.text = pokemonModel.name
-        self.pokemonImage.image = pokemonModel.image
+        self.pokemonImage.image = Pokemon.getImage(stringUrl: pokemonModel.imageUrl)
         self.typeLabel.text = "Type: \(pokemonModel.type)"
         self.weightLabel.text = "Weight: \(pokemonModel.weight)"
         self.heightLabel.text = "Height: \(pokemonModel.height)"
