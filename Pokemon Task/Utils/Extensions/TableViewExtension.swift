@@ -5,7 +5,6 @@
 //  Created by MacMini on 26.10.22.
 //
 
-import Foundation
 import UIKit
 
 extension UITableView {

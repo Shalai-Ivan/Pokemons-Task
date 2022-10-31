@@ -7,8 +7,8 @@
 
 import UIKit
 
-class SplashViewController: UIViewController {
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+final class SplashViewController: UIViewController {
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,9 +7,15 @@
 
 import UIKit
 
-class NetworkManager {
+protocol NetworkManagerDelegate {
+    func didWithError(error: Error)
+    func updateUI()
+}
+
+final class NetworkManager {
     var isPaginating = false
-    func fetchRequest(stringUrl: String, pagination: Bool, completion: @escaping ((PokemonData?, String?) -> Void)) {
+    var delegate: NetworkManagerDelegate?
+    func fetchRequest(stringUrl: String, pagination: Bool, completion: @escaping ((PokemonData) -> Void)) {
         guard let url = URL(string: stringUrl) else { return }
         if pagination {
             isPaginating = true
@@ -18,13 +24,14 @@ class NetworkManager {
             let session = URLSession(configuration: .default)
             let dataTask = session.dataTask(with: url) { [weak self] data, response, error in
                 guard error == nil else {
-                    completion(nil, error?.localizedDescription)
+                    self?.delegate?.didWithError(error: error!)
                     return
                 }
                 if let data = data {
                     if let pokemonData = self?.parseJSON(data: data) {
-                        completion(pokemonData, nil)
+                        completion(pokemonData)
                         self?.isPaginating = false
+                        self?.delegate?.updateUI()
                     }
                 }
             }
@@ -36,7 +43,7 @@ class NetworkManager {
             let pokemonData = try JSONDecoder().decode(PokemonData.self, from: data)
             return pokemonData
         } catch let error {
-            print(error.localizedDescription)
+            self.delegate?.didWithError(error: error)
         }
         return nil
     }

@@ -35,7 +35,7 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="pokemon-background"/>
                                 </userDefinedRuntimeAttributes>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="EYC-Yc-WKm">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="EYC-Yc-WKm">
                                 <rect key="frame" x="0.0" y="426" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -43,12 +43,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <constraints>
-                            <constraint firstItem="EYC-Yc-WKm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2xT-hN-YbA"/>
+                            <constraint firstItem="EYC-Yc-WKm" firstAttribute="centerY" secondItem="NoW-tg-5KS" secondAttribute="centerY" id="40J-qI-J9e"/>
                             <constraint firstAttribute="trailing" secondItem="NoW-tg-5KS" secondAttribute="trailing" id="AoB-df-SMM"/>
                             <constraint firstAttribute="bottom" secondItem="NoW-tg-5KS" secondAttribute="bottom" id="PTY-8v-HIl"/>
                             <constraint firstItem="NoW-tg-5KS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TGG-Yv-2RK"/>
+                            <constraint firstItem="EYC-Yc-WKm" firstAttribute="centerX" secondItem="NoW-tg-5KS" secondAttribute="centerX" id="XbA-qR-vfR"/>
                             <constraint firstItem="NoW-tg-5KS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="eTw-vJ-rpG"/>
-                            <constraint firstItem="EYC-Yc-WKm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="roJ-rk-lAh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Sdl-kX-qbN">
@@ -56,7 +56,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="EYC-Yc-WKm" id="b9J-Ur-aob"/>
-                        <outlet property="tableView" destination="NoW-tg-5KS" id="1Hq-em-lFG"/>
+                        <outlet property="mainTableView" destination="NoW-tg-5KS" id="Cr4-ZA-e64"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
