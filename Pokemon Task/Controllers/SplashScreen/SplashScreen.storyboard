@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="SplashViewController" customModule="Pokemon_Task" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokemon-launch" translatesAutoresizingMaskIntoConstraints="NO" id="Pim-u9-S4S">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="bqh-Kr-7MB">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Pim-u9-S4S" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="6cu-dy-vOQ"/>
+                            <constraint firstItem="Pim-u9-S4S" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Tt8-wA-rUI"/>
+                            <constraint firstItem="bqh-Kr-7MB" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="UY0-Gs-Mrx"/>
+                            <constraint firstItem="bqh-Kr-7MB" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="V7u-2K-Wr5"/>
+                            <constraint firstItem="Pim-u9-S4S" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="dbJ-Ty-bqn"/>
+                            <constraint firstAttribute="bottom" secondItem="Pim-u9-S4S" secondAttribute="bottom" id="drL-fK-QDj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="bqh-Kr-7MB" id="UpR-7h-HAL"/>
+                        <segue destination="ySe-Cw-caP" kind="show" identifier="toMainScreen" id="5kZ-Gz-nqy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="92.410714285714278"/>
+        </scene>
+        <!--MainScreen-->
+        <scene sceneID="JsB-vz-X3e">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainScreen" id="ySe-Cw-caP" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="oKQ-qo-klw"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QUT-rm-UFB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="810" y="93"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pokemon-launch" width="1080" height="1920"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

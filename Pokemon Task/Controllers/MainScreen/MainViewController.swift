@@ -15,29 +15,10 @@ final class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        internetCheck()
         setupSettings()
         viewModel = MainViewModel()
     }
-    // MARK: - Checking internet connection
-    private func internetCheck() {
-        print("INTERNET CHECKING")
-        if !Reachability.isConnectedToNetwork() {
-            var repeating = true
-            while repeating || Reachability.isConnectedToNetwork() {
-                createAlert(fotTitle: "Bad connection", forMessage: "Sorry, you have no internet connection",
-                            forStyle: .alert, forAlertType: .internetConnection) { [weak self] bool in
-                    if bool {
-                        repeating = false
-                    } else {
-                        self?.activityIndicator.startAnimating()
-                        sleep(3)
-                        self?.activityIndicator.stopAnimating()
-                    }
-                }
-            }
-        }
-    }
+    
     private func setupSettings() {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
                                                                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25)]

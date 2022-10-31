@@ -29,6 +29,8 @@
 		9A91E2452909BF6300C9D21F /* DetailsScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A91E2442909BF6300C9D21F /* DetailsScreen.storyboard */; };
 		9AAE8663290EECA9006E56DB /* ViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE8662290EECA9006E56DB /* ViewController + Alert.swift */; };
 		9AAE8666290EF641006E56DB /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE8665290EF641006E56DB /* InternetConnection.swift */; };
+		9ADEAF8A290FAA20004B2E0C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEAF89290FAA20004B2E0C /* SplashViewController.swift */; };
+		9ADEAF8D290FAC41004B2E0C /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADEAF8C290FAC41004B2E0C /* SplashScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		9A91E2442909BF6300C9D21F /* DetailsScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsScreen.storyboard; sourceTree = "<group>"; };
 		9AAE8662290EECA9006E56DB /* ViewController + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + Alert.swift"; sourceTree = "<group>"; };
 		9AAE8665290EF641006E56DB /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
+		9ADEAF89290FAA20004B2E0C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		9ADEAF8C290FAC41004B2E0C /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +211,7 @@
 		9A8BBA0529096D47002ABB08 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9ADEAF8B290FAB43004B2E0C /* SplashScreen */,
 				9A91E2412909BF1C00C9D21F /* Details Screen */,
 				9A8BBA0929098CAD002ABB08 /* MainScreen */,
 			);
@@ -276,6 +281,15 @@
 				9AAE8665290EF641006E56DB /* InternetConnection.swift */,
 			);
 			path = InternetConnection;
+			sourceTree = "<group>";
+		};
+		9ADEAF8B290FAB43004B2E0C /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9ADEAF89290FAA20004B2E0C /* SplashViewController.swift */,
+				9ADEAF8C290FAC41004B2E0C /* SplashScreen.storyboard */,
+			);
+			path = SplashScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A8BB9DF29096B53002ABB08 /* LaunchScreen.storyboard in Resources */,
+				9ADEAF8D290FAC41004B2E0C /* SplashScreen.storyboard in Resources */,
 				9A8BB9DC29096B53002ABB08 /* Assets.xcassets in Resources */,
 				9A91E2452909BF6300C9D21F /* DetailsScreen.storyboard in Resources */,
 				9A8BBA0D29098CD6002ABB08 /* MainTableViewCell.xib in Resources */,
@@ -412,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AAE8663290EECA9006E56DB /* ViewController + Alert.swift in Sources */,
+				9ADEAF8A290FAA20004B2E0C /* SplashViewController.swift in Sources */,
 				9A8BB9D729096B51002ABB08 /* MainViewController.swift in Sources */,
 				9A8BB9D329096B51002ABB08 /* AppDelegate.swift in Sources */,
 				9A6D8C60290A7C2E009B3940 /* NetworkManager.swift in Sources */,
@@ -606,7 +622,7 @@
 				INFOPLIST_FILE = "Pokemon Task/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = MainScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = SplashScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -634,7 +650,7 @@
 				INFOPLIST_FILE = "Pokemon Task/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = MainScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = SplashScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
