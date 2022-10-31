@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
@@ -88,3 +89,17 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+=======
+.DS_Store
+
+# Xcode personal settings
+xcuserdata/
+
+# Cocoapods
+Pods/
+
+# Build Artifacts
+build/
+.build/
+DerivedData/
+>>>>>>> Developing

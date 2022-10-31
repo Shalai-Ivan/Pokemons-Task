@@ -5,21 +5,22 @@
 //  Created by MacMini on 27.10.22.
 //
 
-import Foundation
+import UIKit
 
 final class MainViewModel {
     private var nextPokemonsUrl: String = ""
     private var names: [String] = []
     private var urlsInfo: [String] = []
     private var networkManager = NetworkManager()
-    var apiUrl = "https://pokeapi.co/api/v2/pokemon"
+    private var apiUrl = "https://pokeapi.co/api/v2/pokemon"
     
-    init() {
-        sendRequest(pagination: false, completion: nil)
+    init(viewController: UIViewController) {
+        networkManager.delegate = viewController as? NetworkManagerDelegate
+        self.sendRequest(pagination: false, completion: nil)
     }
     private func sendRequest(pagination: Bool, completion: ((Bool) -> Void)?) {
         let stringUrl = nextPokemonsUrl.isEmpty ? apiUrl : nextPokemonsUrl
-        networkManager.fetchRequest(stringUrl: stringUrl, pagination: pagination) { [weak self] pokemonData in
+        networkManager.fetchRequest(stringUrl: stringUrl, pagination: pagination) { [weak self] pokemonData  in
             self?.nextPokemonsUrl = pokemonData.nextPokemonsUrl ?? ""
             guard let results = pokemonData.results else { return }
             for item in results {

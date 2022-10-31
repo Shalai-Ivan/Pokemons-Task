@@ -21,7 +21,11 @@ final class DetailsViewController: UIViewController {
     }
     
     private func setupUI() {
-        guard let pokemonModel = pokemonModel else { return }
+        guard let pokemonModel = pokemonModel else {
+            createAlert(fotTitle: "Error", forMessage: "Sorry, something went wrong.", forStyle: .alert, forAlertType: .error) { [weak self] _ in
+                self?.navigationController?.popToRootViewController(animated: true)
+            }
+            return }
         self.nameLabel.text = pokemonModel.name
         self.pokemonImage.image = pokemonModel.image
         self.typeLabel.text = "Type: \(pokemonModel.type)"
