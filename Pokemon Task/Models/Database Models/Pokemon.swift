@@ -5,13 +5,13 @@
 //  Created by MacMini on 27.10.22.
 //
 
+import Foundation
 import RealmSwift
-import UIKit
 
 class Pokemon: Object {
     
     @Persisted(primaryKey: true) var name: String
-    @Persisted var imageUrl: String
+    @Persisted var image: Data
     @Persisted var type: String
     @Persisted var weight: String
     @Persisted var height: String
@@ -22,20 +22,6 @@ class Pokemon: Object {
         self.type = pokemonData.types?[0].type.name ?? "Unknown"
         self.weight = String(pokemonData.weight ?? -1)
         self.height = String(pokemonData.height ?? -1)
-        self.imageUrl = pokemonData.sprites?.imageUrl ?? ""
-    }
-    
-    static func getImage(stringUrl: String?) -> UIImage {
-        let defaultImage = UIImage(named: "noImage")!
-        if let string = stringUrl, let url = URL(string: string) {
-            do {
-                let data = try Data(contentsOf: url)
-                let image = UIImage(data: data)
-                return image ?? defaultImage
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }
-        return defaultImage
+        self.image = NetworkManager.getData(stringUrl: pokemonData.sprites?.imageUrl ?? "")
     }
 }

@@ -7,7 +7,6 @@
 
 import RealmSwift
 import UIKit
-import SwiftUI
 
 final class MainViewModel {
     private var nextPokemonsUrl: String = ""
@@ -53,6 +52,7 @@ final class MainViewModel {
         }
     }
     private func savePokemonModel(stringUrl: String) {
+        guard Reachability.isConnectedToNetwork() else { return }
         networkManager.fetchRequest(stringUrl: stringUrl) { pokemonData in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }

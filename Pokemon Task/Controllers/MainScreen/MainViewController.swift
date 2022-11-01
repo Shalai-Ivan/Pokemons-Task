@@ -17,7 +17,6 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         setupSettings()
         viewModel = MainViewModel(viewController: self)
-        print("VIEW DID LOAD")
     }
     private func setupSettings() {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,

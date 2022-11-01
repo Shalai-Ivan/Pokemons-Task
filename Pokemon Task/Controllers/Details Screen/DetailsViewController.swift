@@ -27,7 +27,7 @@ final class DetailsViewController: UIViewController {
             }
             return }
         self.nameLabel.text = pokemonModel.name
-        self.pokemonImage.image = Pokemon.getImage(stringUrl: pokemonModel.imageUrl)
+        self.pokemonImage.image = NetworkManager.getImage(data: pokemonModel.image)
         self.typeLabel.text = "Type: \(pokemonModel.type)"
         self.weightLabel.text = "Weight: \(pokemonModel.weight)"
         self.heightLabel.text = "Height: \(pokemonModel.height)"

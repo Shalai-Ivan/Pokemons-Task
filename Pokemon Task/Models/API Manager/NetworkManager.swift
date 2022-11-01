@@ -40,4 +40,21 @@ final class NetworkManager {
         }
         return nil
     }
+    
+    static func getData(stringUrl: String) -> Data {
+        if let url = URL(string: stringUrl) {
+            do {
+                let data = try Data(contentsOf: url)
+                return data
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        return Data()
+    }
+    static func getImage(data: Data) -> UIImage {
+        let defaultImage = UIImage(named: "noImage")!
+        let image = UIImage(data: data)
+        return image ?? defaultImage
+    }
 }
