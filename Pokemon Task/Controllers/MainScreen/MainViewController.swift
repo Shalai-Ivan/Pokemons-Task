@@ -17,6 +17,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         setupSettings()
         viewModel = MainViewModel(viewController: self)
+        print("VIEW DID LOAD")
     }
     private func setupSettings() {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -26,7 +27,6 @@ final class MainViewController: UIViewController {
         mainTableView.dataSource = self
         let cellNib = UINib(nibName: String(describing: MainTableViewCell.self), bundle: nil)
         mainTableView.register(cellNib, forCellReuseIdentifier: Identifiers.Cells.main.rawValue)
-        activityIndicator.startAnimating()
     }
     private func createFooterView() -> UIView {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100))
@@ -58,8 +58,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource  {
         tableView.deselectRow(at: indexPath, animated: true)
         let storyboard = UIStoryboard(name: Identifiers.Storyboards.details.rawValue, bundle: nil)
         let detailsVC = storyboard.instantiateInitialViewController() as! DetailsViewController
-        let name = viewModel?.getName(forIndexpath: indexPath)
-        viewModel?.getModel(forIndexPath: indexPath, forName: name!) { pokemonModel in
+        viewModel?.getModel(forIndexPath: indexPath) { pokemonModel in
             detailsVC.pokemonModel = pokemonModel
             DispatchQueue.main.async { [weak self] in
                 self?.activityIndicator.stopAnimating()
@@ -76,10 +75,10 @@ extension MainViewController: UIScrollViewDelegate {
             mainTableView.tableFooterView = createFooterView()
             viewModel?.getMorePokemons() { bool in
                 if bool {
-                    DispatchQueue.main.async { [weak self] in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [weak self] in
                         self?.mainTableView.tableFooterView = nil
                         self?.mainTableView.reloadData()
-                    }
+                    })
                 }
             }
         }

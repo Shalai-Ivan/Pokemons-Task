@@ -16,7 +16,7 @@ class Pokemon: Object {
     @Persisted var weight: String
     @Persisted var height: String
     
-   convenience init(pokemonData: PokemonData) {
+    convenience init(pokemonData: PokemonData) {
         self.init()
         self.name = pokemonData.name ?? "Unknown"
         self.type = pokemonData.types?[0].type.name ?? "Unknown"

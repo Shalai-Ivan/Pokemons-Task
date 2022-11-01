@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct PokemonData: Codable {
     let nextPokemonsUrl: String?
@@ -22,8 +23,8 @@ struct PokemonData: Codable {
 }
 
 struct Results: Codable {
-    let name: String
-    let urlInfo: String
+    var name: String
+    var urlInfo: String
     enum CodingKeys: String, CodingKey {
         case name
         case urlInfo = "url"

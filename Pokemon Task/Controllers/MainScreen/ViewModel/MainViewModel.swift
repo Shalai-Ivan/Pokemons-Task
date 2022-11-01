@@ -7,49 +7,62 @@
 
 import RealmSwift
 import UIKit
+import SwiftUI
 
 final class MainViewModel {
     private var nextPokemonsUrl: String = ""
     private var names: [String] = []
     private var urlsInfo: [String] = [] {
         willSet {
-            DispatchQueue.main.sync {
-                self.savePokemonModel(stringUrl: newValue.last!)                
-            }
+            self.savePokemonModel(stringUrl: newValue.last!)
         }
     }
-    private var networkManager = NetworkManager()
+    private var isPaginating = false
     private var apiUrl = "https://pokeapi.co/api/v2/pokemon"
+    private let networkManager = NetworkManager()
+    private let realm = try! Realm()
     
     init(viewController: UIViewController) {
         networkManager.delegate = viewController as? NetworkManagerDelegate
-        self.sendRequest(pagination: false, completion: nil)
+        self.sendRequest()
     }
-    private func sendRequest(pagination: Bool, completion: ((Bool) -> Void)?) {
+    private func sendRequest() {
         let stringUrl = nextPokemonsUrl.isEmpty ? apiUrl : nextPokemonsUrl
-        networkManager.fetchRequest(stringUrl: stringUrl, pagination: pagination) { [weak self] pokemonData  in
-            self?.nextPokemonsUrl = pokemonData.nextPokemonsUrl ?? ""
-            guard let results = pokemonData.results else { return }
-            for item in results {
-                self?.names.append(item.name)
-                self?.urlsInfo.append(item.urlInfo)
+        let objects = realm.objects(PokemonsList.self)
+        if objects.contains(where: { $0.currentUrl == stringUrl }) {
+            let object = self.realm.object(ofType: PokemonsList.self, forPrimaryKey: stringUrl)!
+            self.nextPokemonsUrl = object.nextPokemonsUrl
+            for item in object.info {
+                self.names.append(item.name)
+                self.urlsInfo.append(item.urlInfo)
             }
-            completion?(true)
+        } else {
+            networkManager.fetchRequest(stringUrl: stringUrl) { [weak self] pokemonData  in
+                DispatchQueue.main.async {
+                    try! self?.realm.write({
+                        let pokemonInfo = PokemonsList(pokemonData: pokemonData, currentUrl: stringUrl)
+                        self?.realm.create(PokemonsList.self, value: pokemonInfo)
+                    })
+                }
+                self?.nextPokemonsUrl = pokemonData.nextPokemonsUrl!
+                for item in pokemonData.results! {
+                    self?.names.append(item.name)
+                    self?.urlsInfo.append(item.urlInfo)
+                }
+            }
         }
     }
     private func savePokemonModel(stringUrl: String) {
-        networkManager.fetchRequest(stringUrl: stringUrl, pagination: false) { pokemonData in
-            DispatchQueue.main.async {
-                let realm = try! Realm()
+        networkManager.fetchRequest(stringUrl: stringUrl) { pokemonData in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
                 let model = Pokemon(pokemonData: pokemonData)
-                let models = realm.objects(Pokemon.self)
-                print("MODELS IN REALM - \(models.count)")
+                let models = self.realm.objects(Pokemon.self)
                 if !models.contains(where: { pokemonModel in
                     model.name == pokemonModel.name
                 }) {
-                    print("RESUL BOOL - \(!models.contains(model))")
-                    try! realm.write {
-                        realm.create(Pokemon.self, value: model)
+                    try! self.realm.write {
+                        self.realm.create(Pokemon.self, value: model)
                     }
                 }
             }
@@ -66,21 +79,22 @@ extension MainViewModel: MainScreenViewModelType {
         return names[indexPath.row]
     }
     func getMorePokemons(completion: @escaping (Bool) -> Void) {
-        guard !networkManager.isPaginating else { return completion(false) }
-        sendRequest(pagination: true) { bool in
-            completion(bool)
-        }
+        guard !isPaginating else { return completion(false) }
+        isPaginating = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+            self.sendRequest()
+            completion(true)
+            self.isPaginating = false
+        })
     }
-    func getModel(forIndexPath indexPath: IndexPath, forName name: String, completion: @escaping (Pokemon) -> Void) {
-        let realm = try! Realm()
+    func getModel(forIndexPath indexPath: IndexPath, completion: @escaping (Pokemon) -> Void) {
+        let name = names[indexPath.row]
         if let model = realm.object(ofType: Pokemon.self, forPrimaryKey: name) {
             completion(model)
-            print("REALM WORKED")
         } else {
             let stringUrl = urlsInfo[indexPath.row]
-            networkManager.fetchRequest(stringUrl: stringUrl, pagination: false) { pokemonData in
+            networkManager.fetchRequest(stringUrl: stringUrl) { pokemonData in
                 completion(Pokemon(pokemonData: pokemonData))
-                print("NETWORK MANAGER WORKED")
             }
         }
     }
