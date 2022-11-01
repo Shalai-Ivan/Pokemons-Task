@@ -26,7 +26,6 @@ final class MainViewController: UIViewController {
         mainTableView.dataSource = self
         let cellNib = UINib(nibName: String(describing: MainTableViewCell.self), bundle: nil)
         mainTableView.register(cellNib, forCellReuseIdentifier: Identifiers.Cells.main.rawValue)
-        activityIndicator.startAnimating()
     }
     private func createFooterView() -> UIView {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100))
@@ -58,8 +57,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource  {
         tableView.deselectRow(at: indexPath, animated: true)
         let storyboard = UIStoryboard(name: Identifiers.Storyboards.details.rawValue, bundle: nil)
         let detailsVC = storyboard.instantiateInitialViewController() as! DetailsViewController
-        viewModel?.getModel(forIndexPath: indexPath) { pokemonData in
-            detailsVC.pokemonModel = PokemonModel(pokemonData: pokemonData)
+        viewModel?.getModel(forIndexPath: indexPath) { pokemonModel in
+            detailsVC.pokemonModel = pokemonModel
             DispatchQueue.main.async { [weak self] in
                 self?.activityIndicator.stopAnimating()
                 self?.navigationController?.pushViewController(detailsVC, animated: true)
@@ -75,10 +74,10 @@ extension MainViewController: UIScrollViewDelegate {
             mainTableView.tableFooterView = createFooterView()
             viewModel?.getMorePokemons() { bool in
                 if bool {
-                    DispatchQueue.main.async { [weak self] in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [weak self] in
                         self?.mainTableView.tableFooterView = nil
                         self?.mainTableView.reloadData()
-                    }
+                    })
                 }
             }
         }

@@ -13,30 +13,23 @@ protocol NetworkManagerDelegate {
 }
 
 final class NetworkManager {
-    var isPaginating = false
     var delegate: NetworkManagerDelegate?
-    func fetchRequest(stringUrl: String, pagination: Bool, completion: @escaping ((PokemonData) -> Void)) {
+    func fetchRequest(stringUrl: String, completion: @escaping ((PokemonData) -> Void)) {
         guard let url = URL(string: stringUrl) else { return }
-        if pagination {
-            isPaginating = true
-        }
-        DispatchQueue.global().asyncAfter(deadline: .now() + (pagination ? 3 : 0)) {
-            let session = URLSession(configuration: .default)
-            let dataTask = session.dataTask(with: url) { [weak self] data, response, error in
-                guard error == nil else {
-                    self?.delegate?.didWithError(error: error!)
-                    return
-                }
-                if let data = data {
-                    if let pokemonData = self?.parseJSON(data: data) {
-                        completion(pokemonData)
-                        self?.isPaginating = false
-                        self?.delegate?.updateUI()
-                    }
+        let session = URLSession(configuration: .default)
+        let dataTask = session.dataTask(with: url) { [weak self] data, response, error in
+            guard error == nil else {
+                self?.delegate?.didWithError(error: error!)
+                return
+            }
+            if let data = data {
+                if let pokemonData = self?.parseJSON(data: data) {
+                    completion(pokemonData)
+                    self?.delegate?.updateUI()
                 }
             }
-            dataTask.resume()
         }
+        dataTask.resume()
     }
     private func parseJSON (data: Data) -> PokemonData? {
         do {
@@ -46,5 +39,22 @@ final class NetworkManager {
             self.delegate?.didWithError(error: error)
         }
         return nil
+    }
+    
+    static func getData(stringUrl: String) -> Data {
+        if let url = URL(string: stringUrl) {
+            do {
+                let data = try Data(contentsOf: url)
+                return data
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        return Data()
+    }
+    static func getImage(data: Data) -> UIImage {
+        let defaultImage = UIImage(named: "noImage")!
+        let image = UIImage(data: data)
+        return image ?? defaultImage
     }
 }
