@@ -17,11 +17,11 @@ final class MainViewModel {
         }
     }
     private var isPaginating = false
-    private var apiUrl = "https://pokeapi.co/api/v2/pokemon"
+    private let apiUrl = "https://pokeapi.co/api/v2/pokemon"
     private let networkManager = NetworkManager()
     private let realm = try! Realm()
     
-    init(viewController: UIViewController) {
+    init(viewController: UIViewController?) {
         networkManager.delegate = viewController as? NetworkManagerDelegate
         self.sendRequest()
     }
@@ -37,7 +37,7 @@ final class MainViewModel {
             }
         } else {
             networkManager.fetchRequest(stringUrl: stringUrl) { [weak self] pokemonData  in
-                DispatchQueue.main.async {
+                DispatchQueue.global().async {
                     try! self?.realm.write({
                         let pokemonInfo = PokemonsList(pokemonData: pokemonData, currentUrl: stringUrl)
                         self?.realm.create(PokemonsList.self, value: pokemonInfo)
@@ -69,7 +69,7 @@ final class MainViewModel {
         }
     }
 }
-
+// MARK: - MainScreenViewModelType
 extension MainViewModel: MainScreenViewModelType {
 
     func getCount() -> Int {

@@ -22,7 +22,7 @@ extension UIViewController {
             alert.addAction(actionOk)
             self.present(alert, animated: true)
         case .internetConnection:
-            let actionQuit = UIAlertAction(title: "Continue", style: .default) {_ in
+            let actionQuit = UIAlertAction(title: "Continue offline", style: .default) {_ in
                 completion?(true)
             }
             let actionTryAgain = UIAlertAction(title: "Try again", style: .default) { action in

@@ -74,10 +74,10 @@ extension MainViewController: UIScrollViewDelegate {
             mainTableView.tableFooterView = createFooterView()
             viewModel?.getMorePokemons() { bool in
                 if bool {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [weak self] in
+                    DispatchQueue.main.async { [weak self] in
                         self?.mainTableView.tableFooterView = nil
                         self?.mainTableView.reloadData()
-                    })
+                    }
                 }
             }
         }
