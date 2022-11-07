@@ -37,7 +37,7 @@ final class MainViewModel {
             }
         } else {
             networkManager.fetchRequest(stringUrl: stringUrl) { [weak self] pokemonData  in
-                DispatchQueue.global().async {
+                DispatchQueue.main.async {
                     try! self?.realm.write({
                         let pokemonInfo = PokemonsList(pokemonData: pokemonData, currentUrl: stringUrl)
                         self?.realm.create(PokemonsList.self, value: pokemonInfo)
