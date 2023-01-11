@@ -11,7 +11,7 @@ import RealmSwift
 class Pokemon: Object {
     
     @Persisted(primaryKey: true) var name: String
-    @Persisted var image: Data
+    @Persisted var image: String
     @Persisted var type: String
     @Persisted var weight: String
     @Persisted var height: String
@@ -22,6 +22,6 @@ class Pokemon: Object {
         self.type = pokemonData.types?[0].type.name ?? "Unknown"
         self.weight = String(pokemonData.weight ?? -1)
         self.height = String(pokemonData.height ?? -1)
-        self.image = NetworkManager.getData(stringUrl: pokemonData.sprites?.imageUrl ?? "")
+        self.image = pokemonData.sprites?.imageUrl ?? ""
     }
 }
